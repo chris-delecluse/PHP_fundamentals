@@ -1,6 +1,6 @@
 <?php
 
-function de_capitalize(string $string)
+function de_capitalize(string $string) : void
 {
     echo strtolower($string);
 }

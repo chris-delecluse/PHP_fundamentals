@@ -1,45 +1,37 @@
 <?php
 
-$pupil = array(
-    'name' => $_POST['name'],
-    'gender' => $_POST['gender'],
-    'teacher_name' => $_POST['teacher-name'],
-);
-
 $result = "";
 
-$excuse_illness = " de maladie.";
-$excuse_death = " , un membre de ma famille est décédé";
-$excuse_extra_curricular = ", est allé à la piscine.";
-$excuse_transport_issues = ", les transports en commun sont en grève";
-
-$submit = $_POST['submit'];
-$get_name = $_POST['name'];
-$get_gender = $_POST['gender'];
-$get_reason = $_POST['reason'];
+$excuse_illness = " of illness, she was vomiting all night so I recommended a day of rest. We have the proof from the doctor that we will send to you as soon as he returns to school.";
+$excuse_death = " a member of my family passed away";
+$excuse_extra_curricular = " : has other more interesting things to do...";
+$excuse_transport_issues = " of public transport still on strike";
 
 $error = "Error...";
 
-if (isset($submit)) {
-    if ($get_gender == "man") {
-        $result = "Mon fils ";
-    } else if ($get_gender == "woman") {
-        $result = "Ma fille ";
+if (isset($_POST['submit'])) {
+
+    $result = "Dear " . $_POST['teacher'];
+
+    if ($_POST['gender'] == "man") {
+        $result = $result . ", my son ";
+    } else if ($_POST['gender'] == "woman") {
+        $result = $result . ", my daughter ";
     } else {
         echo $error;
     }
 
-    $result = $result . $pupil['name'] . " n'est pas venu aujourd'hui en cour pour cause";
+    $result = $result . $_POST['name'] . " did not come to court today because";
 
-    if ($get_reason == "illness") {
+    if ($_POST['reason'] == "illness") {
         $result = $result . " " . $excuse_illness;
-    } else if ($get_reason == "death") {
+    } else if ($_POST['reason'] == "death") {
         $result = $result . " " . $excuse_death;
-    } else if ($get_reason == "extra-curricular") {
+    } else if ($_POST['reason'] == "extra-curricular") {
         $result = $result . " " . $excuse_extra_curricular;
-    } else if ($get_reason == "mobility") {
+    } else if ($_POST['reason'] == "mobility") {
         $result = $result . " " . $excuse_transport_issues;
-    } else if ($get_reason == "default") {
+    } else if ($_POST['reason'] == "default") {
         $result = "";
     } else {
         echo $error;

@@ -1,6 +1,6 @@
 <?php
 
-function feedback(string $message, string $css_class = "info")
+function feedback(string $message, string $css_class = "info") : void
 {
     $error = "The class name must do not contain space";
 
